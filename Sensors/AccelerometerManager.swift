@@ -21,12 +21,6 @@ struct SensorData {
 class AccelerometerManager : ObservableObject {
     
     private let motionManager = CMMotionManager()
-    @Published var x = 0.0
-    @Published var y = 0.0
-    @Published var z = 0.0
-    @Published var rx = 0.0
-    @Published var ry = 0.0
-    @Published var rz = 0.0
     @Published var arr: SensorData = SensorData.init(x: [], y: [], z: [], rx: [], ry: [], rz: [])
     @Published var dataDict: SensorData = SensorData(x: [], y: [], z: [], rx: [], ry: [], rz: [])
 
@@ -51,16 +45,13 @@ class AccelerometerManager : ObservableObject {
             
             // Access accelerometer data
             let acceleration = accelerometerData.acceleration
-            self.x = acceleration.x
-            self.y = acceleration.y
-            self.z = acceleration.z
-            
+
             // Process the accelerometer data or perform any desired actions
-            print("Accelerometer data: x=\( self.x), y=\( self.y), z=\( self.z)")
+            print("Accelerometer data: x=\( acceleration.x), y=\( acceleration.y), z=\( acceleration.z)")
             
-            self.arr.x.append(Float(self.x))
-            self.arr.y.append(Float(self.y))
-            self.arr.z.append(Float(self.z))
+            self.arr.x.append(Float(acceleration.x))
+            self.arr.y.append(Float(acceleration.y))
+            self.arr.z.append(Float(acceleration.z))
 
 //            print(self.xa)
         }
@@ -84,14 +75,12 @@ class AccelerometerManager : ObservableObject {
                     
                     // Access gyroscope data
                     let rotationRate = gyroData.rotationRate
-                    self.rx = rotationRate.x
-                    self.ry = rotationRate.y
-                    self.rz = rotationRate.z
-                    self.arr.rx.append(Float(self.x))
-                    self.arr.ry.append(Float(self.y))
-                    self.arr.rz.append(Float(self.z))
+
+                    self.arr.rx.append(Float(rotationRate.x))
+                    self.arr.ry.append(Float(rotationRate.y))
+                    self.arr.rz.append(Float(rotationRate.z))
                     // Process the gyroscope data or perform any desired actions
-                    print("Gyroscope data: x=\( self.x), y=\( self.y), z=\( self.z)")
+                    print("Gyroscope data: x=\( rotationRate.x), y=\( rotationRate.y), z=\( rotationRate.z)")
                 }
     }
     
