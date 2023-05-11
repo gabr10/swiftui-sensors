@@ -7,20 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270CCBA22A0D73B900505BDA /* SensorGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270CCBA12A0D73B900505BDA /* SensorGraphView.swift */; };
 		27E7632D2A0C45AD00F6C836 /* SensorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7632C2A0C45AD00F6C836 /* SensorsApp.swift */; };
 		27E7632F2A0C45AD00F6C836 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7632E2A0C45AD00F6C836 /* ContentView.swift */; };
 		27E763312A0C45AF00F6C836 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27E763302A0C45AF00F6C836 /* Assets.xcassets */; };
 		27E763342A0C45AF00F6C836 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27E763332A0C45AF00F6C836 /* Preview Assets.xcassets */; };
-		27E7633B2A0C46D800F6C836 /* SensorFeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7633A2A0C46D800F6C836 /* SensorFeeder.swift */; };
+		27E7633B2A0C46D800F6C836 /* AccelerometerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7633A2A0C46D800F6C836 /* AccelerometerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		270CCBA12A0D73B900505BDA /* SensorGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorGraphView.swift; sourceTree = "<group>"; };
 		27E763292A0C45AD00F6C836 /* Sensors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sensors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E7632C2A0C45AD00F6C836 /* SensorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsApp.swift; sourceTree = "<group>"; };
 		27E7632E2A0C45AD00F6C836 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		27E763302A0C45AF00F6C836 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27E763332A0C45AF00F6C836 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		27E7633A2A0C46D800F6C836 /* SensorFeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorFeeder.swift; sourceTree = "<group>"; };
+		27E7633A2A0C46D800F6C836 /* AccelerometerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +57,8 @@
 			children = (
 				27E7632C2A0C45AD00F6C836 /* SensorsApp.swift */,
 				27E7632E2A0C45AD00F6C836 /* ContentView.swift */,
-				27E7633A2A0C46D800F6C836 /* SensorFeeder.swift */,
+				270CCBA12A0D73B900505BDA /* SensorGraphView.swift */,
+				27E7633A2A0C46D800F6C836 /* AccelerometerManager.swift */,
 				27E763302A0C45AF00F6C836 /* Assets.xcassets */,
 				27E763322A0C45AF00F6C836 /* Preview Content */,
 			);
@@ -141,8 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				27E7632F2A0C45AD00F6C836 /* ContentView.swift in Sources */,
-				27E7633B2A0C46D800F6C836 /* SensorFeeder.swift in Sources */,
+				27E7633B2A0C46D800F6C836 /* AccelerometerManager.swift in Sources */,
 				27E7632D2A0C45AD00F6C836 /* SensorsApp.swift in Sources */,
+				270CCBA22A0D73B900505BDA /* SensorGraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

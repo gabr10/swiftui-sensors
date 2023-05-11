@@ -28,7 +28,8 @@ class AccelerometerManager : ObservableObject {
     @Published var ry = 0.0
     @Published var rz = 0.0
     @Published var arr: SensorData = SensorData.init(x: [], y: [], z: [], rx: [], ry: [], rz: [])
-    
+    @Published var dataDict: SensorData = SensorData(x: [], y: [], z: [], rx: [], ry: [], rz: [])
+
     func startUpdates() {
         guard motionManager.isAccelerometerAvailable else {
             print("Accelerometer is not available.")
@@ -97,5 +98,18 @@ class AccelerometerManager : ObservableObject {
     func stopUpdates() {
         motionManager.stopAccelerometerUpdates()
         motionManager.stopGyroUpdates()
+    }
+    // Start accelerometer updates when the view appears
+    func onAppear() {
+        self.startUpdates()
+    }
+    
+    // Stop accelerometer updates when the view disappears
+    func onDisappear() {
+        self.stopUpdates()
+    }
+    func updateData(_: Date) {
+        dataDict = self.arr
+    
     }
 }
