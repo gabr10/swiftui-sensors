@@ -48,7 +48,11 @@ class AccelerometerManager : ObservableObject {
 
             // Process the accelerometer data or perform any desired actions
             print("Accelerometer data: x=\( acceleration.x), y=\( acceleration.y), z=\( acceleration.z)")
-            
+            if self.arr.x.count > 100 {
+                self.arr.x.remove(at: 0)
+                self.arr.y.remove(at: 0)
+                self.arr.z.remove(at: 0)
+            }
             self.arr.x.append(Float(acceleration.x))
             self.arr.y.append(Float(acceleration.y))
             self.arr.z.append(Float(acceleration.z))
@@ -75,10 +79,16 @@ class AccelerometerManager : ObservableObject {
                     
                     // Access gyroscope data
                     let rotationRate = gyroData.rotationRate
+                    if self.arr.rx.count > 100 {
+                        self.arr.rx.remove(at: 0)
+                        self.arr.ry.remove(at: 0)
+                        self.arr.rz.remove(at: 0)
+                    }
 
                     self.arr.rx.append(Float(rotationRate.x))
                     self.arr.ry.append(Float(rotationRate.y))
                     self.arr.rz.append(Float(rotationRate.z))
+                    
                     // Process the gyroscope data or perform any desired actions
                     print("Gyroscope data: x=\( rotationRate.x), y=\( rotationRate.y), z=\( rotationRate.z)")
                 }
