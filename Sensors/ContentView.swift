@@ -9,50 +9,63 @@ import SwiftUI
 import Combine
 import Charts
 
-enum Constants {
-    static let lineAmount = 40
-    static let magLimit: Float = 3
-    static let updateInterval = 0.03
-}
+
 struct ContentView: View {
     
-    let timer = Timer.publish(
-            every: Constants.updateInterval,
-            on: .main,
-            in: .common
-        ).autoconnect()
+//    let timer = Timer.publish(
+//            every: Constants.updateInterval,
+//            on: .main,
+//            in: .common
+//        ).autoconnect()
     
     @ObservedObject var accelerometerManager = AccelerometerManager()
-
+    @State private var isShowingDetailView = false
     var body: some View {
-        VStack(spacing: 16) {
-            Text("Accelerometer Data")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.top, 20)
-            
-            VStack(alignment: .leading, spacing: 5) {
-                SensorChart(accelerometerManager: accelerometerManager, arr: accelerometerManager.dataDict.x)
-                SensorChart(accelerometerManager: accelerometerManager, arr: accelerometerManager.dataDict.y)
-                SensorChart(accelerometerManager: accelerometerManager, arr: accelerometerManager.dataDict.z)
-                
-                Text("Gyroscope Data")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.top, 10)
-                SensorChart(accelerometerManager: accelerometerManager, arr: accelerometerManager.dataDict.rx)
-                SensorChart(accelerometerManager: accelerometerManager, arr: accelerometerManager.dataDict.ry)
-                SensorChart(accelerometerManager: accelerometerManager, arr: accelerometerManager.dataDict.rz)
+        NavigationView {
+            ScrollView {
+                VStack(spacing: 16) {
+                    Text("Accelerometer Data")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.top, 20)
+                    
+                    VStack(alignment: .center, spacing: 5) {
+                        SensorChart(accelerometerManager: accelerometerManager, arr: accelerometerManager.dataDict.x)
+                        SensorChart(accelerometerManager: accelerometerManager, arr: accelerometerManager.dataDict.y)
+                        SensorChart(accelerometerManager: accelerometerManager, arr: accelerometerManager.dataDict.z)
+                        
+                        Text("Gyroscope Data")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .padding(.top, 10)
+                        SensorChart(accelerometerManager: accelerometerManager, arr: accelerometerManager.dataDict.rx)
+                        SensorChart(accelerometerManager: accelerometerManager, arr: accelerometerManager.dataDict.ry)
+                        SensorChart(accelerometerManager: accelerometerManager, arr: accelerometerManager.dataDict.rz)
+
+                        Button(action: {isShowingDetailView.toggle()}, label: {
+                            Text("Magnetometer Data")
+                        })
+                        if isShowingDetailView {
+                            NavigationLink(
+                                destination: MagnetoView(magnetoManager: accelerometerManager),
+                                isActive: $isShowingDetailView
+                            ) {
+                                EmptyView()
+                            }
+                            .hidden()
+                        }
+                        
+                    }
+                    .font(.title2)
+                    .padding()
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+                }
+                .onAppear(perform: accelerometerManager.onAppear)
+                //            .onDisappear(perform: accelerometerManager.onDisappear)
             }
-            .font(.title2)
-            .padding()
-            .cornerRadius(10)
-            .padding(.horizontal)
         }
-        .onAppear(perform: accelerometerManager.onAppear)
-        .onDisappear(perform: accelerometerManager.onDisappear)
-        }
-    
+    }
         
 }
 
